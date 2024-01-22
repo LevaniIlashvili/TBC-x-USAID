@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "TBC-Font";
+  src: url("./TBC-Font.woff") format("woff");
+}
+
+:root {
+  --black: #1a1e1f;
+  --white: #f4f4f4;
+  --cyan: #00a3e0;
+}
+
 *,
 *::before,
 *::after {
@@ -12,4 +23,49 @@ html {
 
 body {
   font-size: 1.6rem;
+  font-family: "TBC-Font", Arial, Helvetica, sans-serif;
+}
+
+.nav-logo {
+  width: 18.2rem;
+  height: 4rem;
+}
+
+nav {
+  background-color: var(--black);
+  height: 8.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-container {
+  width: 98rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-menu {
+  width: 45.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.nav-link {
+  font-size: 1.4rem;
+  padding: 0 2.4rem;
+  list-style: none;
+  color: var(--white);
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.nav-link:nth-child(3) {
+  color: var(--cyan);
+}
+
+.nav-link:hover {
+  color: var(--cyan);
+  transition: color 0.3s ease-in-out;
 }
