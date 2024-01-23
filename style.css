@@ -63,6 +63,16 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  transition: background-color 0.3s ease-in-out;
+}
+
+nav.sticky {
+  background-color: #222222f2;
+  transition: background-color 0.3s ease-in-out;
 }
 
 .nav-container {
@@ -98,6 +108,7 @@ nav {
 }
 
 .hero-section {
+  margin-top: 8.4rem;
   position: relative;
   display: flex;
   align-items: center;
