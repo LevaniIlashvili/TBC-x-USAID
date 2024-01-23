@@ -1,24 +1,24 @@
 @font-face {
   font-family: "TBC";
-  src: url("./TBC-Regular.woff") format("woff");
+  src: url("./assets/fonts/TBC-Regular.woff") format("woff");
   font-weight: 400;
 }
 
 @font-face {
   font-family: "TBC";
-  src: url("./TBC-Medium.woff") format("woff");
+  src: url("./assets/fonts/TBC-Medium.woff") format("woff");
   font-weight: 500;
 }
 
 @font-face {
   font-family: "TBC";
-  src: url("./TBC-Semibold.woff") format("woff");
+  src: url("./assets/fonts/TBC-Semibold.woff") format("woff");
   font-weight: 600;
 }
 
 @font-face {
   font-family: "TBC";
-  src: url("./TBC-Bold.woff") format("woff");
+  src: url("./assets/fonts/TBC-Bold.woff") format("woff");
   font-weight: 700;
 }
 
