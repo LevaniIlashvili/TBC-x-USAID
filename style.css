@@ -45,6 +45,7 @@
 
 html {
   font-size: 62.5%;
+  position: relative;
 }
 
 body {
@@ -52,12 +53,14 @@ body {
   font-family: "TBC", Arial, Helvetica, sans-serif;
 }
 
+/* desktop nav */
+
 .nav-logo {
   width: 18.2rem;
   height: 4rem;
 }
 
-nav {
+.navbar {
   background-color: var(--black);
   height: 8.4rem;
   display: flex;
@@ -80,6 +83,7 @@ nav.sticky {
   max-width: 100%;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .nav-menu {
@@ -96,9 +100,10 @@ nav.sticky {
   color: var(--white);
   cursor: pointer;
   transition: color 0.3s ease-in-out;
+  white-space: nowrap;
 }
 
-.nav-link:nth-child(3) {
+.nav-link.active {
   color: var(--cyan);
 }
 
@@ -106,6 +111,114 @@ nav.sticky {
   color: var(--cyan);
   transition: color 0.3s ease-in-out;
 }
+
+/* mobile nav */
+.hamburger-menu-logo {
+  width: 9vw;
+  height: 9vw;
+  display: grid;
+  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  display: none;
+}
+
+.hamburger-menu-logo .first-line {
+  grid-column: 1/2;
+  height: 0.7vw;
+  background-color: var(--white);
+  border-radius: 1.5rem;
+}
+
+.hamburger-menu-logo .second-line {
+  grid-column: 1/3;
+  height: 0.7vw;
+  background-color: var(--white);
+  border-radius: 1.5rem;
+}
+
+.hamburger-menu-logo .third-line {
+  grid-column: 2 / 3;
+  height: 0.7vw;
+  background-color: var(--white);
+  border-radius: 1.5rem;
+}
+
+.hamburger-menu-overlay {
+  width: 100%;
+  height: 100vh;
+  background-color: #1616169e;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-out;
+}
+
+.hamburger-menu.open .hamburger-menu-overlay {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-out;
+}
+
+.hamburger-menu-nav-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  opacity: 0;
+  height: 100vh;
+  background-color: rgb(34, 34, 34);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 9vw;
+  padding: 1.8em 1.5em 0 0;
+  /* daketva */
+  transition: width 0.6s ease-out, opacity 0.3s ease-out;
+}
+
+.hamburger-menu.open .hamburger-menu-nav-menu {
+  width: 62vw;
+  opacity: 1;
+  /* gaxsna */
+  transition: width 0.3s ease-out, opacity 0.6s ease-out;
+}
+
+.hamburger-menu-nav-menu .hamburger-menu-logo {
+  margin-bottom: 3rem;
+}
+
+.hamburger-menu-nav-menu .hamburger-menu-logo .first-line,
+.hamburger-menu-nav-menu .hamburger-menu-logo .second-line,
+.hamburger-menu-nav-menu .hamburger-menu-logo .third-line {
+  background-color: #767676;
+  transition: transform 0.3s ease-in-out;
+}
+
+.hamburger-menu.open .hamburger-menu-nav-menu .hamburger-menu-logo .first-line {
+  transform: rotate(-135deg) translateX(-8px) translateY(-2px);
+}
+
+.hamburger-menu.open
+  .hamburger-menu-nav-menu
+  .hamburger-menu-logo
+  .second-line {
+  transform: rotate(-45deg);
+}
+
+.hamburger-menu.open .hamburger-menu-nav-menu .hamburger-menu-logo .third-line {
+  transform: rotate(-135deg) translateX(6px) translateY(3px);
+}
+
+.hamburger-menu-nav-menu .nav-link {
+  font-size: 4.5vw;
+  padding: 0;
+}
+
+/* hero section */
 
 .hero-section {
   margin-top: 8.4rem;
@@ -201,7 +314,7 @@ nav.sticky {
   width: 98rem;
   max-width: 100%;
   display: grid;
-  align-content: center;
+  justify-content: center;
   grid-template-columns: repeat(auto-fill, 30rem);
   column-gap: 4rem;
   row-gap: 2.5rem;
@@ -258,86 +371,96 @@ nav.sticky {
   transition: color 0.3s ease-in-out;
 }
 
-/* @media (max-width: 768px) {
-  nav {
-    height: 6.4rem;
-    padding: 0 1.3rem;
+@media (max-width: 768px) {
+  .navbar {
+    height: 22vw;
+    padding: 0 1.5em;
   }
 
   .nav-logo {
-    width: 14.2rem;
-    height: 3.2rem;
+    width: 40vw;
+    height: 10vw;
   }
 
   .nav-menu {
-    width: 32rem;
+    display: none;
   }
 
-  .nav-link {
-    font-size: 1.1rem;
-    padding: 0;
+  .hamburger-menu-logo {
+    display: grid;
   }
 
   .hero-section {
-    height: 27rem;
+    margin-top: 22vw;
+    height: 65vw;
+    padding: 0 1.5em;
   }
 
   .hero-text {
-    line-height: 5rem;
+    line-height: 12vw;
   }
 
   .hero-text span:first-child {
-    font-size: 3.2rem;
+    font-size: 8vw;
   }
 
   .hero-text span:last-child {
-    font-size: 2.4rem;
+    font-size: 7vw;
   }
 
   .about-course-section {
-    height: 36rem;
+    height: 150vw;
+    padding: 0 5vw;
   }
 
   .about-course-text {
-    font-size: 2.2rem;
-    line-height: 3.5rem;
+    font-size: 5vw;
+    line-height: 7.5vw;
   }
 
   .learn-more-link {
-    font-size: 1.6rem;
+    font-size: 5vw;
+  }
+
+  .course-list-section {
+    padding: 1.5em;
   }
 
   .course-list-header {
-    font-size: 1.6rem;
-    margin-bottom: 5rem;
+    font-size: 7vw;
+    margin-bottom: 1em;
   }
 
   .course-list-container {
-    grid-template-columns: repeat(auto-fill, 23rem);
-    column-gap: 3rem;
-    row-gap: 1.5rem;
+    grid-template-columns: 85vw;
+    row-gap: 5vw;
   }
 
   .course-card {
-    width: 23rem;
-    height: 34.2rem;
-  }
-
-  .course-card-text-container {
-    height: 18.5rem;
-    padding: 2rem 0 0 1.6rem;
+    width: 85vw;
+    height: 80vw;
   }
 
   .course-card-header {
-    font-size: 1.6rem;
-    margin-bottom: 2rem;
+    margin-bottom: 3vw;
+    font-size: 5vw;
   }
 
   .course-card-registering {
-    font-size: 1.2rem;
+    font-size: 4vw;
+  }
+
+  .course-card-text-container {
+    height: 30vw;
+    padding: 4vw 0 0 4vw;
   }
 
   .course-card-details-link {
-    font-size: 1.3rem;
+    font-size: 4vw;
   }
-} */
+
+  .right-arrow {
+    width: 5vw;
+    height: 5vw;
+  }
+}
