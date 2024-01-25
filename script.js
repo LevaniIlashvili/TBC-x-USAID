@@ -144,3 +144,23 @@ function handleTouchEnd() {
 slideContainer.addEventListener("touchstart", handleTouchStart);
 slideContainer.addEventListener("touchmove", handleTouchMove);
 slideContainer.addEventListener("touchend", handleTouchEnd);
+
+// accordion
+const accordionQuestions = document.querySelectorAll(
+  ".accordion-question-container"
+);
+
+accordionQuestions.forEach((accordionQuestion) => {
+  accordionQuestion.addEventListener("click", () => {
+    const accordionAnswer = accordionQuestion.nextElementSibling;
+    const accordionArrow = accordionQuestion.querySelector(".accordion-arrow");
+
+    console.log(accordionAnswer.style);
+
+    if (accordionAnswer.style.maxHeight) {
+      accordionAnswer.style.maxHeight = null;
+    } else {
+      accordionAnswer.style.maxHeight = accordionAnswer.scrollHeight + "px";
+    }
+  });
+});
