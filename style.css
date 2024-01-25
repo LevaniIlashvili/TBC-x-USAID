@@ -318,6 +318,7 @@ nav.sticky {
   grid-template-columns: repeat(auto-fill, 30rem);
   column-gap: 4rem;
   row-gap: 2.5rem;
+  margin-bottom: 6rem;
 }
 
 .course-card {
@@ -369,6 +370,98 @@ nav.sticky {
 .course-card-details-link:hover {
   color: var(--dark-cyan);
   transition: color 0.3s ease-in-out;
+}
+
+/* slider  */
+.slider-section {
+  height: 36.5rem;
+  background-color: var(--gray);
+  padding: 2em 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.slider-header {
+  width: 98rem;
+  max-width: 100%;
+  color: var(--white);
+  font-size: 2.4rem;
+  font-weight: 400;
+  margin-bottom: 10rem;
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 8rem;
+  display: flex;
+  justify-content: center;
+}
+
+.slides {
+  position: relative;
+  width: 98rem;
+  max-width: 100%;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+}
+
+.slide-3 {
+  justify-content: center;
+}
+
+.slide.active {
+  opacity: 1;
+  transition: opacity 1s ease-in-out;
+}
+
+.slider-btn {
+  width: 4rem;
+  height: 4rem;
+  cursor: pointer;
+  filter: invert(99%) sepia(0%) saturate(5358%) hue-rotate(292deg)
+    brightness(112%) contrast(80%);
+  z-index: 100;
+}
+
+.slider-btn-left {
+  position: absolute;
+  top: 30%;
+  left: 9rem;
+}
+
+.slider-btn-right {
+  transform: rotate(180deg);
+  position: absolute;
+  top: 30%;
+  right: 9rem;
+}
+
+.dots {
+  position: absolute;
+  bottom: -3rem;
+  left: calc(50% - 1.6rem);
+  /* transform: translateX(-50%); */
+  display: flex;
+  gap: 1rem;
+}
+
+.dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: var(--white);
+  cursor: pointer;
+  /* transition: background-color 0.3s ease-in-out; */
 }
 
 @media (max-width: 768px) {
@@ -462,5 +555,30 @@ nav.sticky {
   .right-arrow {
     width: 5vw;
     height: 5vw;
+  }
+
+  .slider-section {
+    height: 50rem;
+    /* padding-left: 3rem; */
+  }
+
+  .slider-header {
+    /* margin-left: 3rem; */
+    padding-left: 3rem;
+  }
+
+  .slide {
+    height: 30rem;
+    flex-direction: column;
+    /* justify-content: center; */
+    gap: 5rem;
+  }
+
+  .slider-btn {
+    display: none;
+  }
+
+  .dots {
+    bottom: -25rem;
   }
 }
