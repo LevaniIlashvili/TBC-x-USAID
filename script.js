@@ -5,6 +5,7 @@ const navbar = document.querySelector(".navbar");
 const heroSection = document.querySelector(".hero-section");
 const heroSectionOffset = heroSection.offsetTop;
 
+const isPhone = window.matchMedia("(max-width: 767px)").matches;
 let prevScrollPos = window.scrollY;
 
 window.addEventListener("scroll", () => {
@@ -14,17 +15,19 @@ window.addEventListener("scroll", () => {
     navbar.classList.remove("sticky");
   }
 
-  let currentScrollPos = window.scrollY;
+  if (isPhone) {
+    let currentScrollPos = window.scrollY;
 
-  if (prevScrollPos > currentScrollPos) {
-    // Scrolling up
-    navbar.style.top = "0";
-  } else {
-    // Scrolling down
-    navbar.style.top = `-${navbar.offsetHeight}px`;
+    if (prevScrollPos > currentScrollPos) {
+      // Scrolling up
+      navbar.style.top = "0";
+    } else {
+      // Scrolling down
+      navbar.style.top = `-${navbar.offsetHeight}px`;
+    }
+
+    prevScrollPos = currentScrollPos;
   }
-
-  prevScrollPos = currentScrollPos;
 });
 
 // Navbar toggle
