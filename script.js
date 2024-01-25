@@ -35,6 +35,7 @@ let isNavbarOpen = false;
 
 const hamburgerLogos = document.querySelectorAll(".hamburger-menu-logo");
 const hamburgerMenu = document.querySelector(".hamburger-menu");
+const body = document.querySelector("body");
 
 hamburgerLogos.forEach((hamburgerLogo) => {
   hamburgerLogo.addEventListener("click", () => {
@@ -42,9 +43,11 @@ hamburgerLogos.forEach((hamburgerLogo) => {
     if (!isNavbarOpen) {
       hamburgerMenu.classList.add("open");
       isNavbarOpen = true;
+      body.classList.add("no-scroll");
     } else {
       hamburgerMenu.classList.remove("open");
       isNavbarOpen = false;
+      body.classList.remove("no-scroll");
     }
   });
 });
