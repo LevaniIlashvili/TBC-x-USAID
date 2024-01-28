@@ -123,23 +123,34 @@ nav.sticky {
   align-items: center;
   grid-template-columns: 1fr 1fr;
   display: none;
+  position: fixed;
+  top: 7vw;
+  right: 3em;
+  z-index: 200;
+  transition: all 0.3s ease-in-out;
 }
 
-.hamburger-menu-logo .first-line {
+.hamburger-logo-first-line,
+.hamburger-logo-second-line,
+.hamburger-logo-third-line {
+  transition: transform 0.3s ease-in-out;
+}
+
+.hamburger-logo-first-line {
   grid-column: 1/2;
   height: 0.7vw;
   background-color: var(--white);
   border-radius: 1.5rem;
 }
 
-.hamburger-menu-logo .second-line {
+.hamburger-logo-second-line {
   grid-column: 1/3;
   height: 0.7vw;
   background-color: var(--white);
   border-radius: 1.5rem;
 }
 
-.hamburger-menu-logo .third-line {
+.hamburger-logo-third-line {
   grid-column: 2 / 3;
   height: 0.7vw;
   background-color: var(--white);
@@ -179,7 +190,7 @@ nav.sticky {
   flex-direction: column;
   align-items: flex-end;
   gap: 9vw;
-  padding: 1.8em 1.5em 0 0;
+  padding: 10em 1.5em 0 0;
   /* daketva */
   transition: width 0.6s ease-out, opacity 0.3s ease-out;
 }
@@ -192,29 +203,21 @@ nav.sticky {
   transition: width 0.3s ease-out, opacity 0.6s ease-out;
 }
 
-.hamburger-menu-nav-menu .hamburger-menu-logo {
-  margin-bottom: 3rem;
-}
-
-.hamburger-menu-nav-menu .hamburger-menu-logo .first-line,
-.hamburger-menu-nav-menu .hamburger-menu-logo .second-line,
-.hamburger-menu-nav-menu .hamburger-menu-logo .third-line {
+.hamburger-menu.open + .hamburger-menu-logo .hamburger-logo-first-line,
+.hamburger-menu.open + .hamburger-menu-logo .hamburger-logo-second-line,
+.hamburger-menu.open + .hamburger-menu-logo .hamburger-logo-third-line {
   background-color: #767676;
-  transition: transform 0.3s ease-in-out;
 }
 
-.hamburger-menu.open .hamburger-menu-nav-menu .hamburger-menu-logo .first-line {
+.hamburger-menu.open + .hamburger-menu-logo .hamburger-logo-first-line {
   transform: rotate(-135deg) translateX(-8px) translateY(-2px);
 }
 
-.hamburger-menu.open
-  .hamburger-menu-nav-menu
-  .hamburger-menu-logo
-  .second-line {
+.hamburger-menu.open + .hamburger-menu-logo .hamburger-logo-second-line {
   transform: rotate(-45deg);
 }
 
-.hamburger-menu.open .hamburger-menu-nav-menu .hamburger-menu-logo .third-line {
+.hamburger-menu.open + .hamburger-menu-logo .hamburger-logo-third-line {
   transform: rotate(-135deg) translateX(6px) translateY(3px);
 }
 
@@ -533,6 +536,11 @@ nav.sticky {
   font-weight: 400;
 }
 
+.accordion-arrow {
+  width: 3rem;
+  height: 3rem;
+}
+
 .accordion-arrow.active {
   transform: rotate(180deg);
 }
@@ -777,6 +785,18 @@ footer {
 
   .accordion-all-questions-link.mobile {
     display: block;
+  }
+
+  .accordion-header-text {
+    font-size: 6vw;
+  }
+
+  .accordion-question {
+    font-size: 5vw;
+  }
+
+  .accordion-answer {
+    font-size: 4vw;
   }
 
   /* footer */

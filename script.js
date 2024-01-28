@@ -4,6 +4,7 @@
 const navbar = document.querySelector(".navbar");
 const heroSection = document.querySelector(".hero-section");
 const heroSectionOffset = heroSection.offsetTop;
+const hamburgerLogo = document.querySelector(".hamburger-menu-logo");
 
 const isPhone = window.matchMedia("(max-width: 767px)").matches;
 let prevScrollPos = window.scrollY;
@@ -20,9 +21,11 @@ window.addEventListener("scroll", () => {
 
     if (prevScrollPos > currentScrollPos) {
       // Scrolling up
+      hamburgerLogo.style.top = "7vw";
       navbar.style.top = "0";
     } else {
       // Scrolling down
+      hamburgerLogo.style.top = "-10vw";
       navbar.style.top = `-${navbar.offsetHeight}px`;
     }
 
@@ -33,23 +36,19 @@ window.addEventListener("scroll", () => {
 // Navbar toggle
 let isNavbarOpen = false;
 
-const hamburgerLogos = document.querySelectorAll(".hamburger-menu-logo");
 const hamburgerMenu = document.querySelector(".hamburger-menu");
 const body = document.querySelector("body");
 
-hamburgerLogos.forEach((hamburgerLogo) => {
-  hamburgerLogo.addEventListener("click", () => {
-    console.log("clicked");
-    if (!isNavbarOpen) {
-      hamburgerMenu.classList.add("open");
-      isNavbarOpen = true;
-      body.classList.add("no-scroll");
-    } else {
-      hamburgerMenu.classList.remove("open");
-      isNavbarOpen = false;
-      body.classList.remove("no-scroll");
-    }
-  });
+hamburgerLogo.addEventListener("click", () => {
+  if (!isNavbarOpen) {
+    hamburgerMenu.classList.add("open");
+    isNavbarOpen = true;
+    body.classList.add("no-scroll");
+  } else {
+    hamburgerMenu.classList.remove("open");
+    isNavbarOpen = false;
+    body.classList.remove("no-scroll");
+  }
 });
 
 // slider
@@ -161,12 +160,12 @@ accordionQuestions.forEach((accordionQuestion) => {
     const accordionAnswer = accordionQuestion.nextElementSibling;
     const accordionArrow = accordionQuestion.querySelector(".accordion-arrow");
 
-    console.log(accordionAnswer.style);
-
     if (accordionAnswer.style.maxHeight) {
       accordionAnswer.style.maxHeight = null;
+      accordionArrow.classList.remove("active");
     } else {
       accordionAnswer.style.maxHeight = accordionAnswer.scrollHeight + "px";
+      accordionArrow.classList.add("active");
     }
   });
 });
