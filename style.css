@@ -40,7 +40,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  /* outline: 1px red solid; */
+  /* outline: 1px solid #f00 !important; */
 }
 
 html {
@@ -191,7 +191,6 @@ nav.sticky {
   align-items: flex-end;
   gap: 9vw;
   padding: 10em 1.5em 0 0;
-  /* daketva */
   transition: width 0.6s ease-out, opacity 0.3s ease-out;
 }
 
@@ -199,7 +198,6 @@ nav.sticky {
   width: 62vw;
   opacity: 1;
   overflow: auto;
-  /* gaxsna */
   transition: width 0.3s ease-out, opacity 0.6s ease-out;
 }
 
@@ -384,7 +382,7 @@ nav.sticky {
 .slider-section {
   height: 36.5rem;
   background-color: var(--gray);
-  padding: 2em 0;
+  padding: 3em 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -421,6 +419,7 @@ nav.sticky {
   align-items: center;
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
+  padding: 0 1.5em;
 }
 
 .slide-3 {
@@ -458,7 +457,6 @@ nav.sticky {
   position: absolute;
   bottom: -3rem;
   left: calc(50% - 1.6rem);
-  /* transform: translateX(-50%); */
   display: flex;
   gap: 1rem;
 }
@@ -469,7 +467,6 @@ nav.sticky {
   border-radius: 50%;
   background-color: var(--white);
   cursor: pointer;
-  /* transition: background-color 0.3s ease-in-out; */
 }
 
 /* accordion */
@@ -722,21 +719,25 @@ footer {
     height: 5vw;
   }
 
+  /* slider */
+
   .slider-section {
     height: 55rem;
-    /* padding-left: 3rem; */
   }
 
   .slider-header {
-    /* margin-left: 3rem; */
     padding-left: 3rem;
+    margin-bottom: 5rem;
   }
 
   .slide {
     height: 30rem;
     flex-direction: column;
-    /* justify-content: center; */
     gap: 5rem;
+  }
+
+  .slide img {
+    max-width: 100%;
   }
 
   .slider-btn {
@@ -774,12 +775,12 @@ footer {
 
   /* footer */
   footer {
-    padding: 2rem 5rem;
+    padding: 0 12vw;
   }
 
   .footer-content {
     grid-template-rows: 2fr 1fr 1fr 1fr;
-    height: 30rem;
+    max-height: 30rem;
   }
 
   .footer-content img {
@@ -787,11 +788,20 @@ footer {
     align-self: center;
   }
 
+  .footer-tbc-logo {
+    width: 30vw;
+  }
+
+  .social-media-logo {
+    width: 10vw;
+  }
+
   .footer-btn {
     grid-column: 1/2;
     justify-self: start;
     align-self: center;
-    padding: 1rem 2rem;
+    font-size: 4vw;
+    padding: 2vw 4vw;
   }
 
   .footer-btn,
@@ -800,7 +810,7 @@ footer {
   }
 
   .footer-content p {
-    font-size: 1.8rem;
+    font-size: 4vw;
   }
 
   .footer-content p:nth-child(3) {
