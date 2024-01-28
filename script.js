@@ -3,21 +3,20 @@
 // Navbar
 const navbar = document.querySelector(".navbar");
 const heroSection = document.querySelector(".hero-section");
-const heroSectionOffset = heroSection.offsetTop;
 const hamburgerLogo = document.querySelector(".hamburger-menu-logo");
-
 const isPhone = window.matchMedia("(max-width: 767px)").matches;
 let prevScrollPos = window.scrollY;
+const heroSectionOffset = heroSection.offsetTop;
 
 window.addEventListener("scroll", () => {
   if (window.scrollY > heroSectionOffset - navbar.clientHeight) {
-    navbar.classList.add("sticky");
+    navbar.classList.toggle("sticky");
   } else {
-    navbar.classList.remove("sticky");
+    navbar.classList.toggle("sticky");
   }
 
   if (isPhone) {
-    let currentScrollPos = window.scrollY;
+    const currentScrollPos = window.scrollY;
 
     if (prevScrollPos > currentScrollPos) {
       // Scrolling up
@@ -35,34 +34,27 @@ window.addEventListener("scroll", () => {
 
 // Navbar toggle
 let isNavbarOpen = false;
-
 const hamburgerMenu = document.querySelector(".hamburger-menu");
 const body = document.querySelector("body");
 
-hamburgerLogo.addEventListener("click", () => {
-  if (!isNavbarOpen) {
-    hamburgerMenu.classList.add("open");
-    isNavbarOpen = true;
-    body.classList.add("no-scroll");
-  } else {
-    hamburgerMenu.classList.remove("open");
-    isNavbarOpen = false;
-    body.classList.remove("no-scroll");
-  }
-});
+function toggleNavbar() {
+  isNavbarOpen = !isNavbarOpen;
+  hamburgerMenu.classList.toggle("open", isNavbarOpen);
+  body.classList.toggle("no-scroll", isNavbarOpen);
+}
 
-// slider
+hamburgerLogo.addEventListener("click", toggleNavbar);
+
+// Slider
 const dots = document.querySelectorAll(".dot");
 const sliderBtns = document.querySelectorAll(".slider-btn");
-const slides = [...document.querySelectorAll(".slide")];
+const slides = Array.from(document.querySelectorAll(".slide"));
 let intervalId;
 
 function changeSlide(offset) {
-  const activeSlide = slides.find((slide) =>
+  const activeSlideIndex = slides.findIndex((slide) =>
     slide.classList.contains("active")
   );
-  const activeDot = [...dots].find((dot) => dot.classList.contains("active"));
-  const activeSlideIndex = [...slides].indexOf(activeSlide);
   let nextSlideIndex = activeSlideIndex + offset;
 
   if (nextSlideIndex < 0) {
@@ -71,13 +63,11 @@ function changeSlide(offset) {
     nextSlideIndex = 0;
   }
 
-  const nextSlide = slides[nextSlideIndex];
-  nextSlide.classList.add("active");
-  activeSlide.classList.remove("active");
+  slides[nextSlideIndex].classList.add("active");
+  slides[activeSlideIndex].classList.remove("active");
 
-  const nextDot = dots[nextSlideIndex];
-  nextDot.classList.add("active");
-  activeDot.classList.remove("active");
+  dots[nextSlideIndex].classList.add("active");
+  dots[activeSlideIndex].classList.remove("active");
 }
 
 function startInterval() {
@@ -132,14 +122,12 @@ function handleTouchMove(event) {
 }
 
 function handleTouchEnd() {
-  const swipeThreshold = 50; // Adjust this value as needed
+  const swipeThreshold = 50;
 
   if (touchStartX - touchEndX > swipeThreshold) {
-    // Swiped left, go to the next slide
     clearInterval(intervalId);
     changeSlide(1);
   } else if (touchEndX - touchStartX > swipeThreshold) {
-    // Swiped right, go to the previous slide
     clearInterval(intervalId);
     changeSlide(-1);
   }
