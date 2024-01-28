@@ -577,8 +577,6 @@ footer {
 .footer-content {
   width: 98rem;
   max-width: 100%;
-  /* display: flex;
-  justify-content: space-between; */
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr min-content;
@@ -587,6 +585,10 @@ footer {
 .footer-content img,
 .footer-content div {
   grid-row: 1/2;
+}
+
+.footer-tbc-logo {
+  width: 11rem;
 }
 
 .footer-content div {
@@ -608,35 +610,6 @@ footer {
   grid-row: 3/4;
   align-self: flex-end;
 }
-
-/* .footer div {
-  justify-self: flex-end;
-} */
-
-/* .footer-left-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 2.5rem;
-  font-size: 1.4rem;
-} */
-
-/* .footer-right-col {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 4rem;
-  font-size: 1.4rem;
-}
-
-.footer-right-col div {
-  display: flex;
-  gap: 1rem;
-}
-
-.footer-right-col img {
-  cursor: pointer;
-} */
 
 .footer-btn {
   border: none;
