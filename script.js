@@ -37,11 +37,11 @@ let isNavbarOpen = false;
 const hamburgerMenu = document.querySelector(".hamburger-menu");
 const body = document.querySelector("body");
 
-function toggleNavbar() {
+const toggleNavbar = () => {
   isNavbarOpen = !isNavbarOpen;
   hamburgerMenu.classList.toggle("open", isNavbarOpen);
   body.classList.toggle("no-scroll", isNavbarOpen);
-}
+};
 
 hamburgerLogo.addEventListener("click", toggleNavbar);
 
@@ -51,7 +51,7 @@ const sliderBtns = document.querySelectorAll(".slider-btn");
 const slides = Array.from(document.querySelectorAll(".slide"));
 let intervalId;
 
-function changeSlide(offset) {
+const changeSlide = (offset) => {
   const activeSlideIndex = slides.findIndex((slide) =>
     slide.classList.contains("active")
   );
@@ -68,13 +68,13 @@ function changeSlide(offset) {
 
   dots[nextSlideIndex].classList.add("active");
   dots[activeSlideIndex].classList.remove("active");
-}
+};
 
-function startInterval() {
+const startInterval = () => {
   intervalId = setInterval(() => {
     changeSlide(1);
   }, 4000);
-}
+};
 
 sliderBtns.forEach((sliderBtn) => {
   sliderBtn.addEventListener("click", () => {
@@ -113,15 +113,15 @@ const slideContainer = document.querySelector(".slides");
 let touchStartX = 0;
 let touchEndX = 0;
 
-function handleTouchStart(event) {
+const handleTouchStart = (event) => {
   touchStartX = event.touches[0].clientX;
-}
+};
 
-function handleTouchMove(event) {
+const handleTouchMove = (event) => {
   touchEndX = event.touches[0].clientX;
-}
+};
 
-function handleTouchEnd() {
+const handleTouchEnd = () => {
   const swipeThreshold = 50;
 
   if (touchStartX - touchEndX > swipeThreshold) {
@@ -131,7 +131,7 @@ function handleTouchEnd() {
     clearInterval(intervalId);
     changeSlide(-1);
   }
-}
+};
 
 // Attach touch event listeners
 slideContainer.addEventListener("touchstart", handleTouchStart);
@@ -152,7 +152,7 @@ accordionQuestions.forEach((accordionQuestion) => {
       accordionAnswer.style.maxHeight = null;
       accordionArrow.classList.remove("active");
     } else {
-      accordionAnswer.style.maxHeight = accordionAnswer.scrollHeight + "px";
+      accordionAnswer.style.maxHeight = `${accordionAnswer.scrollHeight}px`;
       accordionArrow.classList.add("active");
     }
   });
